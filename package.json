@@ -1,0 +1,15 @@
+{
+  "name": "nethu-lamahewa-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site for Nethu Lamahewa — plain HTML/CSS/JS, no dependencies.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npx --yes serve site",
+    "preview": "npm run build && npx --yes serve dist"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
