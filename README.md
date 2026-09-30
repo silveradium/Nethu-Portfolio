@@ -12,7 +12,6 @@ site/                 ← the website (edit here)
   og-image.jpg        1200×630 social-share preview
   site.webmanifest, robots.txt
 scripts/build.mjs     copies site/ → dist/ and fills in the absolute site URL
-netlify.toml          Netlify config
 vercel.json           Vercel config
 ```
 
@@ -27,15 +26,12 @@ Or open `site/index.html` via any static server (`python3 -m http.server -d site
 
 ## Deploy
 
-Push this folder to a GitHub/GitLab repo, then:
-
-- **Netlify** — "Add new site → Import an existing project". Settings are read
-  from `netlify.toml` (build `npm run build`, publish `dist`).
-- **Vercel** — "Add New → Project", import the repo. Settings are read from
-  `vercel.json` (framework: Other, output `dist`).
+Hosted on **Vercel**: "Add New → Project", import the GitHub repo. Settings are
+read from `vercel.json` (framework: Other, build `npm run build`, output `dist`),
+so nothing needs changing in the import screen. Every push to `main` redeploys.
 
 The build fills in absolute URLs for the social-share tags automatically
-(Netlify's `URL`, Vercel's `VERCEL_PROJECT_PRODUCTION_URL`). **If you add a
+(from Vercel's `VERCEL_PROJECT_PRODUCTION_URL`). **If you add a
 custom domain, set an environment variable `SITE_URL=https://yourdomain.com`**
 in the host's dashboard so link previews use it.
 

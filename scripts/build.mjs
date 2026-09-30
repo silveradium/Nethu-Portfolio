@@ -3,8 +3,7 @@
 // Social previews (og:image, canonical, og:url) need absolute URLs, so the HTML
 // uses a %SITE_URL% placeholder. The URL is resolved from, in order:
 //   1. SITE_URL                        — set this yourself for a custom domain
-//   2. URL                             — provided by Netlify (primary site URL)
-//   3. VERCEL_PROJECT_PRODUCTION_URL   — provided by Vercel (hostname only)
+//   2. VERCEL_PROJECT_PRODUCTION_URL   — provided by Vercel (hostname only)
 // With none of these, canonical/og:url are dropped and og:image stays relative.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,7 +16,6 @@ const out = path.join(root, 'dist');
 const withScheme = (u) => (u && !/^https?:\/\//.test(u) ? `https://${u}` : u);
 const siteUrl = (
   process.env.SITE_URL ||
-  (process.env.NETLIFY === 'true' ? process.env.URL : '') ||
   withScheme(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
   ''
 ).replace(/\/+$/, '');
